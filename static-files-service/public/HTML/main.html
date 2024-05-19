@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../CSS/styles-main.css">
+    <title>SPOOTYAPP - Main Page</title>
+</head>
+<body>
+    <div id="sidebar">
+        <h1>
+            <img src="../imgs/Spotify-logo_white.png" alt="Spotify logo" id="logo"> 
+            <span class="green-text">SPOTYAPP</span>
+        </h1>
+        <ul>
+            <li><a href="#">Search</a></li>
+            <li><a href="#">Statistics</a></li>
+            <li><a href="#">Friends</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <div id="user-info">
+            <img id="user-photo" src="" alt="User photo">
+            <h2 id="user-name">Hola, [Nombre del Usuario]</h2>
+        </div>
+        
+        <h2 class="section-title">Top Artists</h2>
+        <div class="artist-list"></div>
+        
+        <h2 class="section-title">Top Tracks</h2>
+        <div class="song-list"></div>
+        
+        <h2 class="section-title">Top Genres</h2>
+        <div class="genre-list"></div>
+        
+        <div class="time-range">
+            <select id="timeRangeSelector">
+                <option value="short_term">Last Month</option>
+                <option value="medium_term">Last 6 Months</option>
+                <option value="long_term">Last 12 Months</option>
+            </select>
+        </div>
+    </div>
+    <script src="../JS/main.js"></script>
+</body>
+</html>

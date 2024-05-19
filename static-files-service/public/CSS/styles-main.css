@@ -1,0 +1,171 @@
+/* styles-main.css */
+
+/* General styles for the main layout and content */
+body {
+    background-color: #121212;
+    color: #FFFFFF;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidebar styles */
+#sidebar {
+    width: 200px;
+    background-color: #121212;
+    height: 100vh;
+    position: fixed;
+    padding-top: 20px;
+}
+
+#logo {
+    width: 50px; /* Ajusta el tamaño del logo según sea necesario */
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.green-text {
+    color: #1DB954; /* Color verde para el texto */
+    vertical-align: middle;
+    font-size: 24px; /* Ajusta el tamaño del texto según sea necesario */
+}
+
+#sidebar h1 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+#sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#sidebar ul li {
+    padding: 10px;
+    text-align: center;
+}
+
+#sidebar ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+
+#sidebar ul li a:hover {
+    color: #1DB954;
+}
+
+/* Main content styles */
+#content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* User information styles */
+.user_info {
+    margin-bottom: 20px;
+}
+
+/* Artist and track item styles */
+.artist-item, .track-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+/* Circle and square styles for images */
+.artist-item .circle, .track-item .square {
+    width: 130px;
+    height: 130px;
+    background-size: cover;
+    border-radius: 50%; /* Make artist images circular */
+    background-color: transparent; /* Remove gray background */
+}
+
+.track-item .square {
+    border-radius: 10%; /* If you want circular album images, change this to 50% */
+}
+
+/* Styles for the text under images */
+.artist-item p, .track-item p {
+    margin-top: 5px;
+    font-size: 14px;
+    color: white;
+    text-align: center;
+    font-weight: bold; /* Make text bold */
+}
+
+/* Styles for the dropdown menu */
+.time-range select {
+    background-color: #333;
+    color: white;
+    border: 1px solid #555;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 5px;
+}
+
+.time-range {
+    margin-top: 10px; /* Add top margin to separate from songs */
+}
+
+/* Adjustments for the artist and song list containers */
+.artist-list, .song-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+/* Cambiar el tamaño del texto para los títulos de las secciones */
+.section-title {
+    font-size: 1.8em; /* Ajusta este valor según prefieras */
+    color: #fff;
+}
+
+/* Agregar este bloque al final del archivo */
+#user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+#user-photo {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;
+}
+
+#user-name {
+    font-size: 1.5em;
+    color: #fff;
+}
+
+/* Cambiar el tamaño del texto para los títulos de las secciones */
+.section-title {
+    font-size: 1.8em; /* Ajusta este valor según prefieras */
+    color: #fff;
+}
+
+/* Opcional: ajustar los márgenes de las secciones para mayor separación */
+.artist-list, .song-list, .genre-list {
+    margin-bottom: 20px;
+}
+
+.genre-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.genre-item {
+    background-color: #303030;
+    color: white;
+    padding: 0px 4px;
+    border-radius: 5px;
+    text-align: center;
+}

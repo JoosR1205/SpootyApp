@@ -1,0 +1,20 @@
+{
+  "name": "user-data-service",
+  "version": "1.0.0",
+  "description": "Servicio para obtener datos del usuario desde Spotify",
+  "main": "user-data-service.js",
+  "scripts": {
+    "start": "node user-data-service.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "node-fetch": "^2.6.1",
+    "dotenv": "^10.0.0",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0"
+  },
+  "author": "Roberto Padilla",
+  "license": "ISC"
+}

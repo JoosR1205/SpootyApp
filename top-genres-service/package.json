@@ -1,0 +1,20 @@
+{
+  "name": "liked-tracks-service",
+  "version": "1.0.0",
+  "description": "Servicio de pistas gustadas para Spotify",
+  "main": "liked-tracks-service.js",
+  "scripts": {
+    "start": "node liked-tracks-service.js"
+  },
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "cors": "^2.8.5",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0",
+    "node-fetch": "^2.6.1",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "author": "Roberto Padilla",
+  "license": "ISC"
+}

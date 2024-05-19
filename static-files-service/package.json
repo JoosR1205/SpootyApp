@@ -1,0 +1,17 @@
+{
+  "name": "static-files-service",
+  "version": "1.0.0",
+  "description": "Servicio para servir archivos estáticos",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "morgan": "^1.10.0",
+    "express-rate-limit": "^5.2.6"
+  },
+  "author": "Roberto Padilla",
+  "license": "ISC"
+}
