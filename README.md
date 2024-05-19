@@ -233,5 +233,101 @@ El siguiente diagrama muestra cómo están conectados los distintos servicios de
 - **Tecnologías Utilizadas**: Node.js, Express, Morgan, Express-Rate-Limit.
 - **Descripción**: Este servicio se encarga de servir la interfaz de usuario desde la carpeta `public`.
 
-### Monitoreo y Observabilidad
-- Descripción del monitoreo con Prometheus.
+# Monitoreo y Observabilidad
+
+Utilizamos Prometheus para monitorear las métricas del sistema y configurar alertas. Prometheus es una herramienta poderosa que nos permite recolectar, almacenar y consultar métricas de diversas fuentes, lo cual es crucial para mantener la salud y el rendimiento del sistema.
+
+## Configuración de Prometheus
+
+### Paso 1: Instalación de Prometheus
+
+Si no tienes Prometheus instalado, puedes descargarlo e instalarlo siguiendo las instrucciones en su [sitio oficial](https://prometheus.io/download/).
+
+### Paso 2: Configuración del Servicio para Exportar Métricas
+
+Cada uno de nuestros microservicios está configurado para exportar métricas que Prometheus puede recolectar. Aquí tienes un ejemplo de cómo configurar un servicio para exportar métricas:
+
+#### Ejemplo de Configuración en `auth-service.js`
+
+```javascript
+const client = require('prom-client');
+const collectDefaultMetrics = client.collectDefaultMetrics;
+collectDefaultMetrics({ timeout: 5000 });
+
+const register = new client.Registry();
+client.collectDefaultMetrics({ register });
+
+app.get('/metrics', (req, res) => {
+  res.set('Content-Type', register.contentType);
+  res.end(register.metrics());
+});
+```
+
+En este ejemplo, usamos la biblioteca `prom-client` para recolectar métricas por defecto cada 5 segundos. Las métricas se exponen en la ruta `/metrics`, donde Prometheus puede acceder a ellas.
+
+### Paso 3: Configuración de Prometheus para Recolectar Métricas
+
+Una vez que nuestros servicios están configurados para exportar métricas, necesitamos configurar Prometheus para recolectarlas. Aquí tienes un ejemplo de configuración de Prometheus (`prometheus.yml`):
+
+```yaml
+global:
+  scrape_interval: 15s # Intervalo de recolección de métricas
+
+scrape_configs:
+  - job_name: 'auth-service'
+    static_configs:
+      - targets: ['auth-service:3000']
+
+  - job_name: 'user-data-service'
+    static_configs:
+      - targets: ['user-data-service:3001']
+
+  - job_name: 'top-genres-service'
+    static_configs:
+      - targets: ['top-genres-service:3002']
+
+  - job_name: 'static-files-service'
+    static_configs:
+      - targets: ['static-files-service:3003']
+```
+
+### Paso 4: Ejecutar Prometheus
+
+Para ejecutar Prometheus con la configuración anterior, usa el siguiente comando:
+
+```sh
+prometheus --config.file=prometheus.yml
+```
+
+### Consultar Métricas en Prometheus
+
+Una vez que Prometheus está en funcionamiento y recolectando métricas, puedes acceder a la interfaz web de Prometheus visitando `http://localhost:9090` en tu navegador. Desde allí, puedes consultar y visualizar las métricas recolectadas.
+
+### Configuración de Alertas
+
+Prometheus también permite configurar alertas para notificarte cuando ciertos umbrales se alcanzan. Aquí tienes un ejemplo de configuración de una alerta:
+
+```yaml
+groups:
+- name: example
+  rules:
+  - alert: HighErrorRate
+    expr: job:request_latency_seconds:mean5m{job="auth-service"} > 0.5
+    for: 10m
+    labels:
+      severity: critical
+    annotations:
+      summary: "High request latency"
+      description: "Request latency is above 0.5s for 10 minutes."
+```
+
+En este ejemplo, configuramos una alerta para el servicio de autenticación (`auth-service`) que se activa si la latencia promedio de las solicitudes supera los 0.5 segundos durante 10 minutos.
+
+Con estas configuraciones, puedes asegurar que tu sistema está siendo monitoreado adecuadamente y que serás notificado en caso de que ocurra algún problema.
+
+## Conclusión
+
+El monitoreo y la observabilidad son componentes críticos para mantener la salud y el rendimiento de cualquier sistema distribuido. Al utilizar herramientas como Prometheus, puedes recolectar métricas detalladas, configurar alertas, y asegurar que tu sistema está funcionando como se espera.
+
+Asegúrate de revisar y ajustar regularmente tus métricas y alertas para adaptarte a los cambios en tu sistema y en los patrones de uso de tus usuarios.
+
