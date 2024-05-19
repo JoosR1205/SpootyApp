@@ -194,8 +194,6 @@ La arquitectura de SpotyApp está diseñada en base a microservicios, donde cada
 
 El siguiente diagrama muestra cómo están conectados los distintos servicios de SpotyApp:
 
-![Diagrama de Arquitectura](ruta/a/tu/diagrama.png)
-
 1. **Flujo de Autenticación**:
    - El usuario accede a la página de inicio de sesión servida por el Static Files Service.
    - Al iniciar sesión con Spotify, el Auth Service maneja la autenticación y redirige al usuario de vuelta a la aplicación con un token JWT.
@@ -234,33 +232,6 @@ El siguiente diagrama muestra cómo están conectados los distintos servicios de
 - **Funcionalidad**: Sirve archivos estáticos, como HTML, CSS y JavaScript.
 - **Tecnologías Utilizadas**: Node.js, Express, Morgan, Express-Rate-Limit.
 - **Descripción**: Este servicio se encarga de servir la interfaz de usuario desde la carpeta `public`.
-
-## Inyección de Fallos y Resiliencia
-
-### Inyección de Fallos
-La inyección de fallos se implementa mediante un middleware que simula fallos en el sistema de manera controlada.
-
-### Servicios y Funcionalidades
-- **Servicio de Autenticación**:
-  - Descripción de su funcionalidad.
-  - Tecnologías utilizadas.
-  - Flujo de autenticación con Spotify.
-- **Servicio de Datos del Usuario**:
-  - Descripción de su funcionalidad.
-  - Tecnologías utilizadas.
-  - Cómo se obtienen y manejan los datos del usuario.
-- **Servicio de Géneros**:
-  - Descripción de su funcionalidad.
-  - Tecnologías utilizadas.
-  - Cómo se obtienen y manejan los géneros musicales.
-- **Servicio de Archivos Estáticos**:
-  - Descripción de su funcionalidad.
-  - Tecnologías utilizadas.
-
-### Inyección de Fallos y Resiliencia
-- Descripción de cómo se implementa la inyección de fallos.
-- Ejemplos de manejo de fallos.
-- Uso de patrones de resiliencia como Retries y Circuit Breaker.
 
 ### Monitoreo y Observabilidad
 - Descripción del monitoreo con Prometheus.
