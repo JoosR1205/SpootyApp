@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  auth-service:
+    build:
+      context: ./auth-service
+    container_name: auth-service
+    env_file:
+      - ./auth-service/.env
+    ports:
+      - "3000:3000"
+    networks:
+      - spooty-network
+
+  user-data-service:
+    build:
+      context: ./user-data-service
+    container_name: user-data-service
+    env_file:
+      - ./user-data-service/.env
+    ports:
+      - "3001:3001"
+    networks:
+      - spooty-network
+
+  top-genres-service:
+    build:
+      context: ./top-genres-service
+    container_name: top-genres-service
+    env_file:
+      - ./top-genres-service/.env
+    ports:
+      - "3002:3002"
+    networks:
+      - spooty-network
+
+  static-files-service:
+    build:
+      context: ./static-files-service
+    container_name: static-files-service
+    ports:
+      - "3003:3003"
+    networks:
+      - spooty-network
+
+networks:
+  spooty-network:
+    driver: bridge
